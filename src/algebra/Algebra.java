@@ -1,39 +1,155 @@
 /*
 Proyecto para practicar la tabla de Verdad y las leyes lógicas.
-Profesorado de Matemática ISFD Chos Malal - Neuquén.
+Profesorado de Matemática ISFD N° 2 Chos Malal - Neuquén.
  */
 package algebra;
+
+import java.util.Scanner;
+
+class Variables {
+    private boolean p;
+    private boolean q;
+    
+    public Variables() {
+    }
+    public Variables(boolean p, boolean q) {
+        this.p = p;
+        this.q = q;
+    }
+    public boolean isP() {
+        return p;
+    }
+    public void setP(boolean p) {
+        this.p = p;
+    }
+    public boolean isQ() {
+        return q;
+    }
+    public void setQ(boolean q) {
+        this.q = q;
+    }
+ 
+}
 
 public class Algebra {
 
     public static void main(String[] args) {
-        boolean p = true;
-        boolean q = false;
-        boolean noP = !p;
-        boolean noQ = !q;
+        Scanner sc = new Scanner(System.in);
+        int rta = 0;
+        String confirmacionSalida = "no";
+        do{
+            boolean p = true;
+            boolean q = true;
+            Variables qyp = new Variables(p,q);
+            System.out.println("1.Tabla de Verdad");
+            System.out.println("2.Salir");
+            rta = sc.nextInt();
+            switch(rta){
+                case 1:
+                
+                    System.out.println("Ingrese valor de p (verdadero/falso)");
+                        if(sc.next().equalsIgnoreCase("verdadero")){
+                         p = true;
+                         qyp.setP(p);
+                        }else{
+                        p = false;
+                        qyp.setQ(p);
+                            
+                    }
+                        System.out.println("");
+                    System.out.println("Ingrese valor de q (verdadero/falso)");
+                        if(sc.next().equalsIgnoreCase("verdadero")){
+                            q = true;
+                            qyp.setQ(q);
+                        }else{
+                            q = false;
+                            qyp.setQ(q);
+                    }
+                        System.out.println("");
+                        
+                        boolean noP = !p;
+                       
+                            String noPe ="";
+                            if(noP){
+                                noPe = "Verdadero";
+                            }else{
+                                noPe = "Falso";
+                            }
+                        
+                        boolean noQ = !q;
+                        
+                            String noQu ="";
+                            if(noQ){
+                                noQu = "Verdadero";
+                            }else{
+                                noQu = "Falso";
+                            }
+                        
+                        boolean conjuncion = p&&q;
+                        
+                            String conjuncione ="";
+                            if(conjuncion){
+                                conjuncione = "Verdadero";
+                            }else{
+                                conjuncione = "Falso";
+                            }
+                            
+                        boolean disyuncion = p||q;
+                        
+                        String disyuncione ="";
+                            if(disyuncion){
+                                disyuncione = "Verdadero";
+                            }else{
+                                disyuncione = "Falso";
+                            }
+                        
+                        boolean condicional = !p||q;
+                            String condicionale ="";
+                            if(condicional){
+                                condicionale = "Verdadero";
+                            }else{
+                                condicionale = "Falso";
+                            }
+                        
+                        
+                        boolean bicondicional = (!p||q)&&(!q||p);
+                        
+                       String bicondicionale ="";
+                            if(bicondicional){
+                                bicondicionale = "Verdadero";
+                            }else{
+                                bicondicionale = "Falso";
+                            }
+                        
+                        boolean disyExcl = !((!p||q)&&(!q||p));
+                        
+                        String disyExcle ="";
+                            if(disyExcl){
+                                disyExcle = "Verdadero";
+                            }else{
+                                disyExcle = "Falso";
+                            }
+                
+                    System.out.println("no p = ¬p = "+noPe);
+                    System.out.println("no q = ¬q = "+noQu);
+                    System.out.println("conjunción = p ^ q = "+conjuncione);
+                    System.out.println("disyunción = p v q = "+disyuncione);
+                    System.out.println("condicional simple = p → q = "+condicionale);
+                    System.out.println("bicondicional = p ↔ q = "+bicondicionale);
+                    System.out.println("disyunción exclusiva = p ▲ q = "+disyExcle);
+                    System.out.println("");
+                    continue;
+                case 2:
+                System.out.println("¿Está seguro de que desea salir? (si/no)");
+                confirmacionSalida=sc.next();
+            }
+           }while(confirmacionSalida.equals("no"));
         
-        boolean conjuncion = p&&q;
-        boolean disyuncion = p||q;
-        boolean condicional = !p||q;
-        boolean bicondicional = (!p||q)&&(!q||p);
-        boolean disyExcl = !((!p||q)&&(!q||p));
         
         boolean[] filas = new boolean[5];
         boolean[] columnas = new boolean[9];
         
         String[][] tablaDeVerdad = new String[filas.length][columnas.length];
-        
-        System.out.println("p:"+p);
-        System.out.println("q:"+q);
-        System.out.println("no p:"+noP);
-        System.out.println("no q:"+noQ);
-        System.out.println("conjunción:"+conjuncion);
-        System.out.println("disyunción:"+disyuncion);
-        System.out.println("condicional simple:"+condicional);
-        System.out.println("bicondicional:"+bicondicional);
-        System.out.println("disyunción exclusiva:"+disyExcl);
-        
-        
                       
 //        for (int i = 0; i < filas.length; i++) {
 //            for (int j = 0; j < columnas.length; j++) {
